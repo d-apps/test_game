@@ -10,22 +10,27 @@ class Ball extends Component{
   Paint paint;
   Size size;
   Rect rect;
+  double rectX;
+  double rectY;
+
   Random random = Random();
   double tileSize;
-  double speedX = 50;
-  double speedY = -50;
+  double speedX = 25;
+  double speedY = -25;
   double x = 0;
   double y = 0;
 
   Ball(this.size, this.tileSize){
 
+    rectX = size.width / 2.1;
+    rectY = size.height / 1.14;
 
     paint = Paint()..color = Colors.white;
         //..style = PaintingStyle.stroke;
 
     rect = Rect.fromLTWH(
-        size.width / 2.1, // 172.42
-        size.height / 1.14, // 561.00
+        rectX, // 172.42
+        rectY, // 561.00
         20,
         20
     );
@@ -35,13 +40,23 @@ class Ball extends Component{
 
   void moveBall(double dt){
 
+
+    rect = rect.translate(
+      speedX * dt,
+      0,
+
+    );
+
     // EIXO X
     if(rect.left > size.width - 20){
       speedX = speedY;
-    } else if(rect.left < 1){
-      speedX = 50;
     }
 
+    //else if(rect.left < 20){
+    //  speedX = 50;
+    //}
+
+    /*
 
     // EIXO Y
     if(rect.bottom < 20){
@@ -50,18 +65,16 @@ class Ball extends Component{
       speedY = -50;
     }
 
-
-
-    rect = rect.translate(
       speedX * dt,
       speedY * dt,
 
-    );
 
-    //print("LEFT: ${rect.left}");
-    print("TOP: ${rect.top}");
+     */
+
+    print("LEFT: ${rect.left}");
+    //print("TOP: ${rect.top}");
     //print("RIGHT: ${rect.right}");
-    print("BOTTOM: ${rect.bottom}");
+    //print("BOTTOM: ${rect.bottom}");
 
 
   }
