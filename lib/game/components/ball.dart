@@ -15,8 +15,8 @@ class Ball extends Component{
 
   Random random = Random();
   double tileSize;
-  double speedX = 25;
-  double speedY = -25;
+  double speedX = 100;
+  double speedY = -100;
   double x = 0;
   double y = 0;
 
@@ -24,6 +24,9 @@ class Ball extends Component{
 
     rectX = size.width / 2.1;
     rectY = size.height / 1.14;
+
+    x = speedX;
+    y = speedY;
 
     paint = Paint()..color = Colors.white;
         //..style = PaintingStyle.stroke;
@@ -40,39 +43,31 @@ class Ball extends Component{
 
   void moveBall(double dt){
 
-
     rect = rect.translate(
-      speedX * dt,
       0,
+      y * dt,
 
     );
 
     // EIXO X
     if(rect.left > size.width - 20){
-      speedX = speedY;
+      x = speedY;
+    }  else if(rect.left < 8){
+      x = speedX;
     }
 
-    //else if(rect.left < 20){
-    //  speedX = 50;
-    //}
-
-    /*
 
     // EIXO Y
-    if(rect.bottom < 20){
-      speedY = speedX;
-    } else if(rect.bottom > size.height - 20){
-      speedY = -50;
+    if(rect.top < 20){
+      y = speedX;
+    } else if( rect.top > (size.height - 53)){
+      y = speedY;
     }
 
-      speedX * dt,
-      speedY * dt,
 
 
-     */
-
-    print("LEFT: ${rect.left}");
-    //print("TOP: ${rect.top}");
+    //print("LEFT: ${rect.left}");
+    print("TOP: ${rect.top}");
     //print("RIGHT: ${rect.right}");
     //print("BOTTOM: ${rect.bottom}");
 
