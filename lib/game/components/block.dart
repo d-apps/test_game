@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flame/time.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_game/game/test_game.dart';
@@ -12,6 +13,8 @@ class Block {
   Size size;
   double x;
   double y;
+
+  Timer timer;
 
   List<Color> colors = [
 
@@ -27,7 +30,6 @@ class Block {
 
 
   Block({this.size, this.x, this.y}){
-
 
     paint = Paint()..color = Colors.white;
     //..style = PaintingStyle.stroke;
@@ -50,6 +52,8 @@ class Block {
 
   void update(double td){
 
+
   }
+
 
 }

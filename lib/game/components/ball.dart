@@ -44,7 +44,7 @@ class Ball extends Component{
   void moveBall(double dt){
 
     rect = rect.translate(
-      0,
+      x * dt,
       y * dt,
 
     );

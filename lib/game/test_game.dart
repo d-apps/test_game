@@ -15,6 +15,8 @@ class TestGame extends Game {
   double tileSize;
   Ball ball;
   Bar bar;
+  List<Block> blocks = [];
+  Timer timer;
 
   TestGame(this.screenSize){
     initialize();
@@ -27,20 +29,23 @@ class TestGame extends Game {
       print(screenSize.width);
       print(screenSize.height);
 
-      ball = Ball(screenSize, tileSize,);
+      ball = Ball(screenSize, tileSize);
       bar = Bar(screenSize);
 
+      for(int i=0; i <6; i++){
+
+        blocks.add(Block(size: screenSize, x: 73.0 * i, y: 16.0));
+        blocks.add(Block(size: screenSize, x: 73.0 * i, y: 56.0));
+
+      }
+
+      
   }
 
   @override
   void render(Canvas canvas) {
 
-    for(int i=0; i <6; i++){
-
-      Block(size: screenSize, x: 73.0 * i, y: 16.0).render(canvas);
-      Block(size: screenSize, x: 73.0 * i, y: 56.0).render(canvas);
-
-    }
+    blocks.forEach((block) => block.render(canvas));
 
     ball.render(canvas);
     bar.render(canvas);
@@ -52,8 +57,15 @@ class TestGame extends Game {
 
     ball.update(t);
 
+    blocks.forEach((block) => block.update(t));
+
+    blocks.removeWhere((block){
+
+      return ball.rect.overlaps(block.rect);
+
+    });
+
+
   }
-
-
 
 }
