@@ -57,13 +57,28 @@ class TestGame extends Game {
 
     ball.update(t);
 
-    blocks.forEach((block) => block.update(t));
+    // blocks.forEach((block) => block.update(t));
 
+    // Remove overlaped blocks
     blocks.removeWhere((block){
 
-      return ball.rect.overlaps(block.rect);
+      bool isOverlap = false;
+
+      if(ball.rect.overlaps(block.rect)){
+
+        isOverlap = true;
+        ball.y = ball.speedX;
+
+      }
+
+      return isOverlap;
 
     });
+
+    // If ball overlaps the BAR, change Y
+    if(ball.rect.overlaps(bar.rect)){
+      ball.y = ball.speedY;
+    }
 
 
   }

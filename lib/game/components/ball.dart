@@ -60,14 +60,16 @@ class Ball extends Component{
     // EIXO Y
     if(rect.top < 20){
       y = speedX;
-    } else if( rect.top > (size.height - 53)){
-      y = speedY;
+    } else if( rect.top > (size.height - 50)){
+
+      x = rectX;
+      y = rectY;
+
     }
 
 
-
     //print("LEFT: ${rect.left}");
-    print("TOP: ${rect.top}");
+    //print("TOP: ${rect.top}");
     //print("RIGHT: ${rect.right}");
     //print("BOTTOM: ${rect.bottom}");
 
