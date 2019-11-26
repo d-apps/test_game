@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_game/game/components/ball.dart';
 
 class Bar {
 
@@ -27,6 +28,7 @@ class Bar {
   }
 
   void moveBar(Offset delta){
+
     rect = rect.translate(
     delta.dx,
     0

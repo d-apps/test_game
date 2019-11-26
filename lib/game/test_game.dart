@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:test_game/game/components/ball.dart';
 import 'package:test_game/game/components/bar.dart';
 import 'package:test_game/game/components/block.dart';
+import 'package:test_game/game/status.dart';
 
-class TestGame extends Game {
+class TestGame extends Game with TapDetector{
 
   Size screenSize;
   double tileSize;
@@ -17,6 +18,7 @@ class TestGame extends Game {
   Bar bar;
   List<Block> blocks = [];
   Timer timer;
+  Status status = Status.idle;
 
   TestGame(this.screenSize){
     initialize();
@@ -57,7 +59,6 @@ class TestGame extends Game {
 
     ball.update(t);
 
-    // blocks.forEach((block) => block.update(t));
 
     // Remove overlaped blocks
     blocks.removeWhere((block){
@@ -75,12 +76,14 @@ class TestGame extends Game {
 
     });
 
-    // If ball overlaps the BAR, change Y
+    // If ball overlaps the BAR, changes Y coordinate
     if(ball.rect.overlaps(bar.rect)){
       ball.y = ball.speedY;
     }
 
 
   }
+
+
 
 }

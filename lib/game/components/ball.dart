@@ -1,11 +1,14 @@
 import 'dart:math';
 
-import 'package:flame/components/component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui';
 
-class Ball extends Component{
+import 'package:test_game/game/status.dart';
+import 'package:test_game/game/test_game.dart';
+
+
+class Ball {
 
   Paint paint;
   Size size;
@@ -56,14 +59,12 @@ class Ball extends Component{
       x = speedX;
     }
 
-
     // EIXO Y
     if(rect.top < 20){
       y = speedX;
     } else if( rect.top > (size.height - 50)){
 
-      x = rectX;
-      y = rectY;
+      y = speedY;
 
     }
 
@@ -88,7 +89,11 @@ class Ball extends Component{
 
   }
 
+  void setIdlePositions(){
 
+    x = rectX;
+    y = rectY;
 
+  }
 
 }
