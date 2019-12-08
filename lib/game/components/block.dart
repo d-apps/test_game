@@ -7,12 +7,13 @@ import 'package:test_game/game/test_game.dart';
 
 class Block {
 
-  Random random = Random();
+  Random random;
   Rect rect;
   Paint paint = Paint();
   Size size;
   double x;
   double y;
+  Color color;
 
   Timer timer;
 
@@ -31,7 +32,11 @@ class Block {
 
   Block({this.size, this.x, this.y}){
 
-    paint = Paint()..color = Colors.white;
+    random = Random();
+
+    color = colors[random.nextInt(6)];
+
+    paint = Paint()..color = color;
     //..style = PaintingStyle.stroke;
 
     rect = Rect.fromLTWH(
